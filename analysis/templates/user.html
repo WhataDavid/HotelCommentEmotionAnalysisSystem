@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于深度学习的酒店评论情感分析系统</title>
+</head>
+<body>
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <!--<h1>hello {{user}}</h1>-->
+
+    {% if notfound  %}
+        <h2>{{notfound}}</h2>
+    {% else %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{username.avatar_url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{username.name}}</h5>
+                    <p class="card-text">location:{{username.location}}</p>
+                    <p class="card-text">location:{{username.location}}</p>
+                    <p class="card-text">location:{{username.location}}</p>
+                    <p class="card-text">location:{{username.location}}</p>
+                    <p class="card-text">location:{{username.location}}</p>
+                </div>
+            </div>
+    {% endif %}
+
+{% endblock %}
+
+
+</body>
+</html>
+
+
+
+
