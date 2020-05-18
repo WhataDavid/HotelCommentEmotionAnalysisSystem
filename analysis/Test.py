@@ -7,7 +7,9 @@ from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense, Embedding, GRU,LSTM, Bidirectional
 from tensorflow.python.keras.preprocessing.sequence import pad_sequences
 warnings.filterwarnings("ignore")
-cn_model = KeyedVectors.load_word2vec_format('./sgns.zhihu.bigram', binary=False)
+cn_model = KeyedVectors.load('/Users/david/PycharmProjects/Tensor/model.bin',mmap='r')
+cn_model.syn0norm = cn_model.syn0  # prevent recalc of normed vectors
+print(cn_model.most_similar('大学'))  # any word will do: just to page all in
 embedding_dim = 300
 resultString = ""
 test_list = [
@@ -50,3 +52,5 @@ def predict_sentiment(text):
 
 for text in test_list:
     predict_sentiment(text)
+
+

@@ -3,9 +3,9 @@
 {% block content %}
 
 <h1>欢迎使用基于深度学习的酒店评论情感分析系统</h1>
-<p>{{resultString}}</p>
+<!--<p>{{resultString}}</p>-->
 <div class="container">
-    <center>
+    <center style="padding-top:10vh">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -25,36 +25,53 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="请输入分析的语句"
-                           aria-label="Recipient's username" aria-describedby="button-addon2">
+                <form class="input-group mb-3" method="POST" action="{% url 'analysis' %}">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="inputString" placeholder="请输入分析的语句"
+                           aria-label="请输入分析的语句" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">分析</button>
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">分析</button>
                     </div>
-                </div>
+                </form>
 
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                <form class="input-group" enctype="multipart/form-data"  method="POST" action="{% url 'file' %}">
+                    {% csrf_token %}
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile04"
+                               aria-describedby="inputGroupFileAddon04" name="userfile">
+                        <label class="custom-file-label" for="inputGroupFile04">选择文件（支持csv、json、txt格式）</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04" value="upload">分析
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
     </center>
 
 
-    <div class="row" style="margin-top: 300px">
-        {% for x in api %}
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-                <img src="{{x.avatar_url}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{x.login}}</h5>
-                    <p class="card-text">{{x.login}}的github</p>
-                    <a href="{{x.html_url}}" class="btn btn-primary">访问</a>
-                </div>
-            </div>
-        </div>
-        <br>
-        {% endfor %}
-    </div>
+    <!--    <div class="row" style="margin-top: 300px">-->
+    <!--        {% for x in api %}-->
+    <!--        <div class="col-sm">-->
+    <!--            <div class="card" style="width: 18rem;">-->
+    <!--                <img src="{{x.avatar_url}}" class="card-img-top" alt="...">-->
+    <!--                <div class="card-body">-->
+    <!--                    <h5 class="card-title">{{x.login}}</h5>-->
+    <!--                    <p class="card-text">{{x.login}}的github</p>-->
+    <!--                    <a href="{{x.html_url}}" class="btn btn-primary">访问</a>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <br>-->
+    <!--        {% endfor %}-->
+    <!--    </div>-->
 </div>
 
 {% endblock %}

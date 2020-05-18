@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于深度学习的酒店评论情感分析系统</title>
+</head>
+<body>
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1> 文件分析 <span class="badge badge-secondary">{{message}}</span>
+
+</h1>
+
+{% if selected and selectedCorrect %}
+<div class="list-group">
+<!--    <a href="#" class="list-group-item list-group-item-action">文件分析结果</a>-->
+
+    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">文件分析结果</a>
+    {% for result in severalResult %}
+    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">{{result}}</a>
+    {% endfor %}
+<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group-->
+<!--        item</a>-->
+<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group-->
+<!--        item</a>-->
+<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group-->
+<!--        item</a>-->
+<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>-->
+<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>-->
+<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list group item</a>-->
+<!--</div>-->
+{% endif %}
+{% endblock %}
+
+
+</body>
+</html>
+
+
+
+
