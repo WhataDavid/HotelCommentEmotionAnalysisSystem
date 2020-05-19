@@ -37,7 +37,7 @@
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                <form class="input-group" enctype="multipart/form-data"  method="POST" action="{% url 'file' %}">
+                <form class="input-group" enctype="multipart/form-data" method="POST" action="{% url 'file' %}">
                     {% csrf_token %}
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="inputGroupFile04"
@@ -45,14 +45,57 @@
                         <label class="custom-file-label" for="inputGroupFile04">选择文件（支持csv、json、txt格式）</label>
                     </div>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04" value="upload">分析
+                        <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04"
+                                value="upload">分析
                         </button>
                     </div>
                 </form>
 
             </div>
 
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                <form class="input-group mb-3" method="GET" action="{% url 'crawl' %}">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">城市名称</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default" name="city" placeholder="请输入所爬取酒店的所在城市">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">酒店ID</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default" name="hotelId"  placeholder="请输入所爬取酒店的ID">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">爬取页数</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" name="pageNum">
+                            <option value="1" selected>One</option>
+                            <option value="2">Two</option>
+                        </select>
+                    </div>
+
+                    <div class="container">
+                            <div class="col align-self-center">
+                                <button type="submit" class="btn btn-outline-info">爬取</button>
+                            </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+
         </div>
     </center>
 

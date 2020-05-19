@@ -15,22 +15,38 @@
 
 {% if selected and selectedCorrect %}
 <div class="list-group">
-<!--    <a href="#" class="list-group-item list-group-item-action">文件分析结果</a>-->
+    <!--    <a href="#" class="list-group-item list-group-item-action">文件分析结果</a>-->
 
     <a href="#" class="list-group-item list-group-item-action list-group-item-primary">文件分析结果</a>
     {% for result in severalResult %}
-    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">{{result}}</a>
+    {% if '积极' in result %}
+    <a href="#" class="list-group-item list-group-item-action list-group-item-success">{{result}}</a>
+    {% else %}
+    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">{{result}}</a>
+    {% endif %}
     {% endfor %}
-<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success list group-->
-<!--        item</a>-->
-<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger list group-->
-<!--        item</a>-->
-<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning list group-->
-<!--        item</a>-->
-<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list group item</a>-->
-<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>-->
-<!--    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list group item</a>-->
-<!--</div>-->
+</div>
+<center style="padding-top:5vh">
+    <div class="container">
+        <button type="button" class="btn btn-success">
+            积极评论个数 <span class="badge badge-secondary">{{positiveNum}}</span>
+        </button>
+        <button type="button" class="btn btn-danger">
+            消极评论个数 <span class="badge badge-secondary">{{negativeNum}}</span>
+        </button>
+        <button type="button" class="btn btn-warning">
+            评论总个数 <span class="badge badge-secondary">{{sumNum}}</span>
+        </button>
+        <button type="button" class="btn btn-dark">
+            评论平均得分 <span class="badge badge-secondary">{{commentScore}}</span>
+        </button>
+
+    </div>
+    <a href="{% url 'home' %}" class="btn btn-primary" style="margin-top:5vh">返回</a>
+
+</center>
+
+
 {% endif %}
 {% endblock %}
 

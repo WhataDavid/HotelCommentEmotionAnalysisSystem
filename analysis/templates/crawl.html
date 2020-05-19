@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于深度学习的酒店评论情感分析系统</title>
+</head>
+<body>
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1> 爬虫分析 <span class="badge badge-secondary">{{hotelName}}</span>
+
+</h1>
+
+<center style="margin-top:5vh">
+    <div class="container">
+        <button type="button" class="btn btn-primary">
+            城市 <span class="badge badge-secondary">{{city}}</span>
+        </button>
+        <button type="button" class="btn btn-info">
+            酒店ID <span class="badge badge-secondary">{{hotelId}}</span>
+        </button>
+        <!--        <button type="button" class="btn btn-warning">-->
+        <!--            爬取页数 <span class="badge badge-secondary">{{pageNum}}</span>-->
+        <!--        </button>-->
+        <button type="button" class="btn btn-dark">
+            评论平均得分 <span class="badge badge-secondary">{{commentScore}}</span>
+        </button>
+
+    </div>
+    <div class="container" style="margin-top:5vh">
+        <button type="button" class="btn btn-success">
+            积极评论个数 <span class="badge badge-secondary">{{positiveNum}}</span>
+        </button>
+        <button type="button" class="btn btn-danger">
+            消极评论个数 <span class="badge badge-secondary">{{negativeNum}}</span>
+        </button>
+        <button type="button" class="btn btn-warning">
+            评论总个数 <span class="badge badge-secondary">{{sumNum}}</span>
+        </button>
+        <!--        <button type="button" class="btn btn-dark">-->
+        <!--            评论平均得分 <span class="badge badge-secondary">{{commentScore}}</span>-->
+        <!--        </button>-->
+
+    </div>
+
+</center>
+
+
+<div class="list-group" style="margin-top:5vh">
+
+    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">爬虫分析结果</a>
+    {% for result in severalResult %}
+    {% if '积极' in result %}
+    <a href="#" class="list-group-item list-group-item-action list-group-item-success">{{result}}</a>
+    {% else %}
+    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">{{result}}</a>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+
+</body>
+</html>
+
+
+
+
